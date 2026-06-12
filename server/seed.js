@@ -93,7 +93,7 @@ const seedData = async () => {
         category: 'Electronics',
         brand: 'HP',
         stock: 15,
-        images: ['https://images.unsplash.com/photo-1496181130204-755241524eab?auto=format&fit=crop&q=80&w=600'],
+        images: ['https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600'],
         seller: 'HP India',
         isFeatured: true,
         tags: ['laptop', 'hp', 'computer', 'intel']
@@ -132,7 +132,7 @@ const seedData = async () => {
         category: 'Electronics',
         brand: 'Anker',
         stock: 200,
-        images: ['https://images.unsplash.com/photo-1609592424085-f6c6d268cf5b?auto=format&fit=crop&q=80&w=600'],
+        images: ['https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?auto=format&fit=crop&q=80&w=600'],
         seller: 'Anker India',
         isFeatured: false,
         tags: ['powerbank', 'charger', 'anker', 'portable']
