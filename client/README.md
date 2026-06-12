@@ -1,16 +1,58 @@
-# React + Vite
+# 💻 ShopEZ — Frontend Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend React client for the **ShopEZ** e-commerce platform. It is built with **Vite** for rapid hot-module reloading and optimized production bundles.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Technologies Used
 
-## React Compiler
+- **React 19** — User Interface library
+- **Redux Toolkit** — Global state management (Auth, Cart, Wishlist)
+- **React Router v6** — Client-side routing
+- **Vanilla CSS** — Custom styling with premium glassmorphism dark theme
+- **Axios** — HTTP client for backend communication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 How to Run Locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Setup Env Variables
+Ensure you have a `.env` file in this directory (`client/`) containing:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+### 2. Install Client Dependencies
+From the root project directory:
+```bash
+npm run install:all
+```
+*(Or manually in this directory: `npm install --legacy-peer-deps`)*
+
+### 3. Run Development Server
+From the root project directory:
+```bash
+npm run dev:client
+```
+*(Or manually in this directory: `npm run dev`)*
+
+The app will start on: **`http://localhost:5173/`**
+
+---
+
+## 📁 Folder Structure
+
+```
+client/
+├── public/            # Static assets
+└── src/
+    ├── api/           # Axios API configuration
+    ├── assets/        # Local images & custom assets
+    ├── components/    # Reusable UI components (Navbar, Cards, loaders, etc.)
+    ├── pages/         # Screen pages (Home, ProductList, Checkout, etc.)
+    │   └── admin/     # Admin dashboard pages (ManageProducts, ManageOrders)
+    ├── redux/         # Redux store & slices (auth, cart, wishlist)
+    ├── utils/         # Helper functions (price formatting)
+    ├── App.jsx        # Main component & routing definitions
+    └── main.jsx       # Client entrypoint
+```

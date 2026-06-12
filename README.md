@@ -40,7 +40,7 @@
 
 ### Prerequisites
 - Node.js v18+
-- MongoDB (local or Atlas)
+- MongoDB (running locally or a remote Atlas connection string)
 
 ### 1. Clone the Repository
 ```bash
@@ -48,27 +48,38 @@ git clone https://github.com/saisathwikgoudbodige-spec/VIP-C2-ShopEEZ-E-Commerce
 cd VIP-C2-ShopEEZ-E-Commerce-Application
 ```
 
-### 2. Setup Backend
+### 2. Install Dependencies
+Install dependencies for both frontend and backend automatically from the root folder:
 ```bash
-cd server
-npm install
-# Edit .env with your MONGO_URI and JWT_SECRET
-node seed.js        # Seed sample data
-npm run dev         # Start backend on port 5000
+npm run install:all
 ```
 
-### 3. Setup Frontend
+### 3. Setup Environment Variables
+Ensure you have `.env` files in both the `server` and `client` directories with correct ports and keys:
+- **Server `.env`**: Make sure your `MONGO_URI` is correct (defaults to local MongoDB `mongodb://localhost:27017/shopez`).
+- **Client `.env`**: Make sure `VITE_API_URL` points to `http://localhost:5000/api`.
+
+### 4. Seed the Database (Add Products & Users)
+To populate MongoDB with products and testing accounts:
 ```bash
-cd client
-npm install --legacy-peer-deps
-npm run dev         # Start Vite dev server on port 5173
+npm run seed
 ```
 
-### 4. Open in Browser
-```
-Frontend: http://localhost:5173
-Backend:  http://localhost:5000
-```
+### 5. Running the Application
+Open two separate Command Prompt or terminal windows to run the servers concurrently:
+
+- **Window 1 (Backend Server)**:
+  ```bash
+  npm run dev:server
+  ```
+- **Window 2 (Frontend Client)**:
+  ```bash
+  npm run dev:client
+  ```
+
+### 6. Open in Browser
+- **Frontend URL**: http://localhost:5173
+- **Backend API URL**: http://localhost:5000
 
 ---
 
