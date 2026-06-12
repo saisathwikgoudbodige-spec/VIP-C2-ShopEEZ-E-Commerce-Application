@@ -1,0 +1,73 @@
+.order-success-page {
+  padding: 5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 650px;
+  margin: 4rem auto;
+}
+
+.success-icon {
+  font-size: 4.5rem;
+  color: var(--success);
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.4));
+  margin-bottom: 0.5rem;
+}
+
+.success-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--success);
+}
+
+.order-success-page h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.order-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 450px;
+  line-height: 1.5;
+}
+
+.order-id-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 1rem 0;
+}
+
+.order-id-box span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.order-id-box strong {
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-family: monospace;
+}
+
+.order-success-page .action-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+.order-success-page .btn {
+  flex: 1;
+}
