@@ -33,12 +33,6 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="app-container">
-          {/* Glow Background Effects */}
-          <div className="glow-bg">
-            <div className="glow-circle-1"></div>
-            <div className="glow-circle-2"></div>
-          </div>
-
           <Navbar />
 
           <main>

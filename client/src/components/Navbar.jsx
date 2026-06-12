@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/slices/authSlice';
-import { FaShoppingBag, FaHeart, FaUser, FaSearch, FaChevronDown, FaBolt } from 'react-icons/fa';
+import { FaShoppingCart, FaHeart, FaUser, FaSearch, FaChevronDown } from 'react-icons/fa';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import './Navbar.css';
 
@@ -11,10 +11,9 @@ const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const [searchWord, setSearchWord] = useState('');
+  const [search, setSearch] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const { userInfo } = useSelector((s) => s.auth);
   const { cart } = useSelector((s) => s.cart);
@@ -23,18 +22,10 @@ const Navbar = () => {
   const cartCount = cart?.items ? cart.items.reduce((a, i) => a + i.quantity, 0) : 0;
   const wishlistCount = wishlistItems.length;
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => { setMenuOpen(false); }, [location]);
-
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(searchWord.trim() ? `/products?search=${searchWord.trim()}` : '/products');
-    setMenuOpen(false);
+    navigate(search.trim() ? `/products?search=${search.trim()}` : '/products');
+    setMobileOpen(false);
   };
 
   const handleLogout = () => {
@@ -43,125 +34,128 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/products', label: 'Shop' },
-    { to: '/products?category=Electronics', label: 'Electronics' },
-    { to: '/products?category=Fashion', label: 'Fashion' },
-  ];
+  const categories = ['Electronics', 'Fashion', 'Home & Kitchen', 'Books', 'Sports'];
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="navbar-inner">
-        {/* Logo */}
-        <Link to="/" className="navbar-logo">
-          <FaBolt className="logo-bolt" />
-          <span>Shop<span className="logo-accent">EZZ</span></span>
-        </Link>
-
-        {/* Desktop Nav Links */}
-        <div className="navbar-nav-links">
-          {navLinks.map(({ to, label }) => (
-            <Link key={to} to={to} className={`nav-link ${location.pathname === to ? 'active' : ''}`}>
-              {label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Search */}
-        <form className="navbar-search" onSubmit={handleSearch}>
-          <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search products…"
-            value={searchWord}
-            onChange={(e) => setSearchWord(e.target.value)}
-          />
-        </form>
-
-        {/* Right Actions */}
-        <div className="navbar-actions">
-          {/* Wishlist */}
-          <Link to="/wishlist" className="action-btn" aria-label="Wishlist">
-            <FaHeart />
-            {wishlistCount > 0 && <span className="action-count">{wishlistCount}</span>}
+    <header className="site-header">
+      {/* Top bar */}
+      <div className="header-top">
+        <div className="header-top-inner">
+          {/* Logo */}
+          <Link to="/" className="logo">
+            <span className="logo-shop">Shop</span><span className="logo-ez">EZZ</span>
           </Link>
 
-          {/* Cart */}
-          <Link to="/cart" className="action-btn cart-btn" aria-label="Cart">
-            <FaShoppingBag />
-            {cartCount > 0 && <span className="action-count cart-count">{cartCount}</span>}
-          </Link>
+          {/* Search */}
+          <form className="search-bar" onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Search for products, brands and more"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button type="submit" className="search-btn">
+              <FaSearch />
+            </button>
+          </form>
 
-          {/* User */}
-          {userInfo ? (
-            <div className="dropdown-wrapper">
-              <button
-                className="user-btn"
-                onClick={() => setShowDropdown((v) => !v)}
-                onBlur={() => setTimeout(() => setShowDropdown(false), 160)}
-              >
-                {userInfo.avatar ? (
-                  <img src={userInfo.avatar} alt={userInfo.name} className="user-avatar" />
-                ) : (
-                  <span className="user-avatar-init">{userInfo.name[0]}</span>
-                )}
-                <span className="user-name">{userInfo.name.split(' ')[0]}</span>
-                <FaChevronDown className={`chevron ${showDropdown ? 'open' : ''}`} />
-              </button>
-
-              {showDropdown && (
-                <div className="dropdown-menu">
-                  <div className="dropdown-header">
-                    <span>{userInfo.name}</span>
-                    <small>{userInfo.email}</small>
+          {/* Right icons */}
+          <div className="header-actions">
+            {/* User */}
+            {userInfo ? (
+              <div className="dropdown-wrap">
+                <button
+                  className="header-action-btn"
+                  onClick={() => setShowDropdown((v) => !v)}
+                  onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
+                >
+                  <FaUser className="action-icon" />
+                  <div className="action-label">
+                    <span className="action-sub">Hello, {userInfo.name.split(' ')[0]}</span>
+                    <span className="action-main">Account <FaChevronDown style={{ fontSize: 10 }} /></span>
                   </div>
-                  <div className="dropdown-divider" />
-                  <Link to="/profile" className="dropdown-item">My Profile</Link>
-                  <Link to="/orders" className="dropdown-item">My Orders</Link>
-                  {userInfo.role === 'admin' && (
-                    <>
-                      <div className="dropdown-divider" />
-                      <Link to="/admin/dashboard" className="dropdown-item admin-item">⚡ Admin Panel</Link>
-                    </>
-                  )}
-                  <div className="dropdown-divider" />
-                  <button onClick={handleLogout} className="dropdown-item logout-item">Sign Out</button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link to="/login" className="btn btn-primary login-btn">
-              <FaUser /> Login
-            </Link>
-          )}
+                </button>
+                {showDropdown && (
+                  <div className="dropdown">
+                    <Link to="/profile" className="dropdown-item">My Profile</Link>
+                    <Link to="/orders" className="dropdown-item">My Orders</Link>
+                    {userInfo.role === 'admin' && (
+                      <Link to="/admin/dashboard" className="dropdown-item dropdown-admin">Admin Panel</Link>
+                    )}
+                    <hr className="dropdown-hr" />
+                    <button className="dropdown-item dropdown-logout" onClick={handleLogout}>Logout</button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="dropdown-wrap">
+                <Link to="/login" className="header-action-btn">
+                  <FaUser className="action-icon" />
+                  <div className="action-label">
+                    <span className="action-sub">Sign In</span>
+                    <span className="action-main">Account</span>
+                  </div>
+                </Link>
+              </div>
+            )}
 
-          {/* Mobile Toggle */}
-          <button className="hamburger" onClick={() => setMenuOpen((v) => !v)} aria-label="Menu">
-            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+            {/* Wishlist */}
+            <Link to="/wishlist" className="header-action-btn">
+              <div className="icon-wrap">
+                <FaHeart className="action-icon" />
+                {wishlistCount > 0 && <span className="badge-dot">{wishlistCount}</span>}
+              </div>
+              <div className="action-label">
+                <span className="action-sub">Saved</span>
+                <span className="action-main">Wishlist</span>
+              </div>
+            </Link>
+
+            {/* Cart */}
+            <Link to="/cart" className="header-action-btn cart-action">
+              <div className="icon-wrap">
+                <FaShoppingCart className="action-icon" />
+                {cartCount > 0 && <span className="badge-dot cart-dot">{cartCount}</span>}
+              </div>
+              <span className="cart-label">Cart</span>
+            </Link>
+          </div>
+
+          <button className="mobile-toggle" onClick={() => setMobileOpen((v) => !v)}>
+            {mobileOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <form className="mobile-search" onSubmit={handleSearch}>
-          <FaSearch />
-          <input
-            type="text"
-            placeholder="Search products…"
-            value={searchWord}
-            onChange={(e) => setSearchWord(e.target.value)}
-          />
-        </form>
-        {navLinks.map(({ to, label }) => (
-          <Link key={to} to={to} className="mobile-link">{label}</Link>
-        ))}
-        {!userInfo && (
-          <Link to="/login" className="btn btn-primary" style={{ marginTop: '0.5rem' }}>Login / Register</Link>
-        )}
-      </div>
-    </nav>
+      {/* Category nav */}
+      <nav className="category-nav">
+        <div className="category-nav-inner">
+          <Link to="/products" className="cat-nav-link all-link">All Categories</Link>
+          {categories.map((cat) => (
+            <Link key={cat} to={`/products?category=${cat}`} className="cat-nav-link">
+              {cat}
+            </Link>
+          ))}
+          <Link to="/products?discount=true" className="cat-nav-link deal-link">Today's Deals</Link>
+        </div>
+      </nav>
+
+      {/* Mobile search */}
+      {mobileOpen && (
+        <div className="mobile-search-bar">
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              autoFocus
+            />
+            <button type="submit"><FaSearch /></button>
+          </form>
+        </div>
+      )}
+    </header>
   );
 };
 
