@@ -144,13 +144,16 @@ const ProductDetail = () => {
           <h1 className="product-title">{productDetail.name}</h1>
 
           <div className="rating-summary">
-            <div className="stars">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} className={i < Math.round(productDetail.ratings) ? 'star-filled' : 'star-empty'} />
-              ))}
-            </div>
-            <span className="rating-val">{productDetail.ratings.toFixed(1)}</span>
-            <span className="rating-count">({productDetail.numReviews} customer reviews)</span>
+            {productDetail.numReviews > 0 ? (
+              <>
+                <div className="stars">
+                  {productDetail.ratings.toFixed(1)} <FaStar className="star-filled" style={{ fontSize: '9px', marginLeft: '2px' }} />
+                </div>
+                <span className="rating-count">({productDetail.numReviews} customer reviews)</span>
+              </>
+            ) : (
+              <span className="rating-count">No reviews yet</span>
+            )}
           </div>
 
           <div className="product-price-section">

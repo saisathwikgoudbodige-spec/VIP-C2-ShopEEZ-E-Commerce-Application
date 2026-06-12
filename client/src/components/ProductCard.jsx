@@ -66,14 +66,14 @@ const ProductCard = ({ product }) => {
           <span className="product-card-brand">{product.brand || 'ShopEZ'}</span>
           <h4 className="product-card-title">{product.name}</h4>
 
-          <div className="product-card-rating">
-            <div className="stars">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} className={i < Math.round(product.ratings) ? 'star-filled' : 'star-empty'} />
-              ))}
+          {product.numReviews > 0 && (
+            <div className="product-card-rating">
+              <div className="stars">
+                {product.ratings.toFixed(1)} <FaStar className="star-filled" style={{ fontSize: '9px', marginLeft: '2px' }} />
+              </div>
+              <span className="num-reviews">({product.numReviews})</span>
             </div>
-            <span className="num-reviews">({product.numReviews})</span>
-          </div>
+          )}
 
           <div className="product-card-footer">
             <div className="product-card-price">

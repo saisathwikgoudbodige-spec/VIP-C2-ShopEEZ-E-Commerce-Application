@@ -51,7 +51,7 @@ const Cart = () => {
   const hasItems = cart && cart.items && cart.items.length > 0;
 
   const subtotal = cart.totalPrice;
-  const deliveryCharge = subtotal > 100 || subtotal === 0 ? 0 : 9.99;
+  const deliveryCharge = subtotal >= 499 || subtotal === 0 ? 0 : 49;
   const grandTotal = subtotal + deliveryCharge;
 
   return (
@@ -62,7 +62,7 @@ const Cart = () => {
         <div className="cart-page-empty glass-card">
           <FaShoppingBag className="empty-cart-icon" />
           <h2>Your Cart is Empty</h2>
-          <p>Browse our catalog and add premium products to your cart!</p>
+          <p>Browse our store and add products to your cart!</p>
           <Link to="/products" className="btn btn-primary">Continue Shopping</Link>
         </div>
       ) : (

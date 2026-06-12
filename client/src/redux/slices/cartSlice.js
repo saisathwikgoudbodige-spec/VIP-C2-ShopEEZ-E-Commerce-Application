@@ -64,7 +64,7 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart = action.payload;
+        state.cart = action.payload || { items: [], totalPrice: 0 };
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.loading = false;
@@ -76,20 +76,20 @@ const cartSlice = createSlice({
       })
       .addCase(addItemToCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.cart = action.payload;
+        state.cart = action.payload || { items: [], totalPrice: 0 };
       })
       .addCase(addItemToCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
       .addCase(updateCartItemQty.fulfilled, (state, action) => {
-        state.cart = action.payload;
+        state.cart = action.payload || { items: [], totalPrice: 0 };
       })
       .addCase(removeCartItem.fulfilled, (state, action) => {
-        state.cart = action.payload;
+        state.cart = action.payload || { items: [], totalPrice: 0 };
       })
       .addCase(clearUserCart.fulfilled, (state, action) => {
-        state.cart = action.payload;
+        state.cart = action.payload || { items: [], totalPrice: 0 };
       });
   }
 });

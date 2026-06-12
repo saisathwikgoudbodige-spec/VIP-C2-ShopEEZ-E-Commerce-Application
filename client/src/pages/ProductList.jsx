@@ -8,6 +8,7 @@ import Alert from '../components/Alert';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { FaStar, FaFilter } from 'react-icons/fa';
+import { formatPrice } from '../utils/helpers';
 import './ProductList.css';
 
 const ProductList = () => {
@@ -26,7 +27,7 @@ const ProductList = () => {
 
   const [search, setSearch] = useState(urlSearch);
   const [selectedCategory, setSelectedCategory] = useState(urlCategory);
-  const [priceRange, setPriceRange] = useState([0, 1500]);
+  const [priceRange, setPriceRange] = useState([0, 100000]);
   const [selectedRating, setSelectedRating] = useState(urlRating);
   const [sort, setSort] = useState(urlSort);
 
@@ -36,7 +37,7 @@ const ProductList = () => {
     setSelectedRating(urlRating);
     setSort(urlSort);
     const min = Number(urlMinPrice) || 0;
-    const max = Number(urlMaxPrice) || 1500;
+    const max = Number(urlMaxPrice) || 100000;
     setPriceRange([min, max]);
   }, [urlSearch, urlCategory, urlMinPrice, urlMaxPrice, urlRating, urlSort]);
 
@@ -135,15 +136,15 @@ const ProductList = () => {
             <Slider
               range
               min={0}
-              max={1500}
-              step={10}
+              max={100000}
+              step={500}
               value={priceRange}
               onChange={handlePriceChange}
               onAfterChange={handlePriceAfterChange}
             />
             <div className="price-labels">
-              <span>${priceRange[0]}</span>
-              <span>${priceRange[1]}</span>
+              <span>{formatPrice(priceRange[0])}</span>
+              <span>{formatPrice(priceRange[1])}</span>
             </div>
           </div>
         </div>

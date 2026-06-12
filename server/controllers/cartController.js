@@ -126,13 +126,16 @@ export const removeCartItem = async (req, res, next) => {
 // @access  Private
 export const clearCart = async (req, res, next) => {
   try {
-    const cart = await Cart.findOne({ user: req.user._id });
+    let cart = await Cart.findOne({ user: req.user._id });
     if (cart) {
       cart.items = [];
       cart.totalPrice = 0;
       await cart.save();
+    } else {
+      cart = await Cart.create({ user: req.user._id, items: [], totalPrice: 0 });
     }
-    res.json({ success: true, message: 'Cart cleared successfully', cart });
+    const populatedCart = await Cart.findById(cart._id).populate('items.product', 'name price images discountPrice stock category brand');
+    res.json({ success: true, message: 'Cart cleared successfully', cart: populatedCart });
   } catch (error) {
     next(error);
   }

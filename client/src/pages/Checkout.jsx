@@ -68,7 +68,7 @@ const Checkout = () => {
     }));
 
     const subtotal = cart.totalPrice;
-    const deliveryCharge = subtotal > 100 ? 0 : 9.99;
+    const deliveryCharge = subtotal >= 499 ? 0 : 49;
     const totalAmount = subtotal + deliveryCharge;
 
     try {
@@ -96,7 +96,7 @@ const Checkout = () => {
   if (cartError) return <Alert variant="danger">{cartError}</Alert>;
 
   const subtotal = cart.totalPrice || 0;
-  const deliveryCharge = subtotal > 100 || subtotal === 0 ? 0 : 9.99;
+  const deliveryCharge = subtotal >= 499 || subtotal === 0 ? 0 : 49;
   const grandTotal = subtotal + deliveryCharge;
 
   return (
@@ -128,7 +128,7 @@ const Checkout = () => {
                 className="form-control"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="Gotham"
+                placeholder="Mumbai"
                 required
               />
             </div>
@@ -139,7 +139,7 @@ const Checkout = () => {
                 className="form-control"
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                placeholder="NJ"
+                placeholder="Maharashtra"
                 required
               />
             </div>
@@ -153,7 +153,7 @@ const Checkout = () => {
                 className="form-control"
                 value={pincode}
                 onChange={(e) => setPincode(e.target.value)}
-                placeholder="07001"
+                placeholder="400001"
                 required
               />
             </div>
@@ -164,7 +164,7 @@ const Checkout = () => {
                 className="form-control"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                placeholder="USA"
+                placeholder="India"
                 required
               />
             </div>
