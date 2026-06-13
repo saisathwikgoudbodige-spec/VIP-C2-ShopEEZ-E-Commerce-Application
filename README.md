@@ -6,7 +6,9 @@
 
 ## 📂 MERN Phase Wise Templates
 
-This project includes a structured set of phase-wise templates and design documentation located in the [MERN Phase Wise](./MERN%20Phase%20Wise/) folder:
+This project includes a structured set of phase-wise templates and design documentation located in the [MERN Phase Wise](./MERN%20Phase%20Wise/) folder.
+
+👉 **[View the Compiled MERN Phase-Wise Project Documentation](./MERN%20Phase%20Wise/README.md)** (Contains full project specifications, ERDs, DFDs, and UAT matrices customized for ShopEEZ).
 
 ### 📁 Phase-wise Templates
 - **Brainstorming & Ideation Phase**:
