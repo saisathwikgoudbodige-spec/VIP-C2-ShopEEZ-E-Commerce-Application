@@ -10,13 +10,13 @@ This project includes a structured set of phase-wise templates and design docume
 
 ### 📁 Phase-wise Templates
 - **Brainstorming & Ideation Phase**:
-  - [Brainstorming, Idea Generation & Prioritization Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Brainstorming%20%26%20Ideation%20Phase/Brainstorming-%20Idea%20Generation-%20Prioritization%20Template.pdf)
+  - [Brainstorming, Idea Generation & Prioritization Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Brainstorming%20%26%20Ideation%20Phase/Brainstorming%20-%20Idea%20Generation%20-%20Prioritization%20Template.pdf)
   - [Define Problem Statements Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Brainstorming%20%26%20Ideation%20Phase/Define%20Problem%20Statements%20Template.pdf)
   - [Empathy Map Canvas](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Brainstorming%20%26%20Ideation%20Phase/Empathy%20Map%20Canvas.pdf)
 - **Project Design Phase**:
-  - [Problem - Solution Fit Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Problem%20-%20Solution%20Fit%20Template/Problem%20-%20Solution%20Fit%20Template%20v1.pdf)
-  - [Proposed Solution Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Proposed%20Solution/Proposed%20Solution%20Template.pdf)
-  - [Solution Architecture Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Solution%20Architecture/Solution%20Architecture.pdf)
+  - [Problem - Solution Fit Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Problem%20-%20Solution%20Fit%20Template.pdf)
+  - [Proposed Solution Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Proposed%20Solution%20Template.pdf)
+  - [Solution Architecture Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Design%20Phase/Solution%20Architecture%20Template.pdf)
 - **Project Development**:
   - [User Acceptance Testing (UAT) FSD](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Project%20Development/User%20Acceptance%20Testing%20FSD.pdf)
 - **Project Planning Phase**:
@@ -24,7 +24,7 @@ This project includes a structured set of phase-wise templates and design docume
 - **Requirement Analysis**:
   - [Data Flow Diagrams and User Stories](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Requirement%20Analysis/Data%20Flow%20Diagrams%20and%20User%20Stories.pdf)
   - [Solution Requirements](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Requirement%20Analysis/Solution%20Requirements.pdf)
-  - [Technology Stack Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Requirement%20Analysis/Technology%20Stack%20-%20Template.pdf)
+  - [Technology Stack Template](./MERN%20Phase%20Wise/Phase%20Wise%20Templates/Requirement%20Analysis/Technology%20Stack%20Template.pdf)
 
 ### 📁 Project Documentation Reference
 - [FSD Documentation Format](./MERN%20Phase%20Wise/Project%20Documentation/FSD%20Documentation%20Format.pdf)
