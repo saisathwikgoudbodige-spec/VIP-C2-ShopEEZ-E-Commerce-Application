@@ -9,5 +9,8 @@
     "install:all": "cd server && npm install && cd ../client && npm install --legacy-peer-deps"
   },
   "author": "ShopEZ Team",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "pdfkit": "^0.19.1"
+  }
 }
